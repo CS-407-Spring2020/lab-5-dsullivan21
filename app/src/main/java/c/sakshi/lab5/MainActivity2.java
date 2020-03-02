@@ -44,18 +44,16 @@ public class MainActivity2 extends AppCompatActivity {
         Context context = getApplicationContext();
         SQLiteDatabase sqLiteDatabase = context.openOrCreateDatabase("notes", Context.MODE_PRIVATE, null);
 
-        // Create DBHelper and read notes
         DBHelper dbHelper = new DBHelper(sqLiteDatabase);
-        this.notes = dbHelper.readNotes(username);
+        this.notes = dbHelper.readNotes(str);
 
         ArrayList<String> displayNotes = new ArrayList<>();
         for (Note note : notes) {
             displayNotes.add(String.format("Title:%s\nDate:%s", note.getTitle(), note.getDate()));
         }
 
-        // Use listView to display notes on screen
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, displayNotes);
-        ListView listView = findViewById(R.id.listView);
+        ListView listView = findViewById(R.id.noteslistView);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

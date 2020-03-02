@@ -55,13 +55,16 @@ public class MainActivity3 extends AppCompatActivity {
         if (noteid == -1) {
             title = "NOTE_" + (MainActivity2.notes.size() + 1);
             dbHelper.saveNote(username, title, content, date);
+            noteid++;
         }
         else {
             title = "NOTE_" + (noteid + 1);
             dbHelper.updateNote(title, date, content, username);
+            noteid++;
         }
 
         Intent intent = new Intent(this, MainActivity2.class);
+        intent.putExtra("message", username);
         startActivity(intent);
     }
 }
