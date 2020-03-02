@@ -7,7 +7,7 @@
         />
 
     <item
-        android:id='@+id/note'
+        android:id='@+id/addnote'
         android:title = "New Note"
         />
 
